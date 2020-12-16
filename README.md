@@ -1,2 +1,0 @@
-# DestinyMod
- Minecraft Mod 
