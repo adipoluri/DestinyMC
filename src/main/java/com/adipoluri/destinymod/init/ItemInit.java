@@ -16,5 +16,8 @@ public class ItemInit {
 
     public static final RegistryObject<Item> BULLET = Registration.ITEMS.register("bullet", () ->
             new BulletItem(new Item.Properties().group(DestinyMod.DestinyItemGroup.instance).maxStackSize(16)));
+
+
+
     static void register(){}
 }

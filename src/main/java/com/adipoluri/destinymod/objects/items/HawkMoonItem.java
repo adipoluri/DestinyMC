@@ -1,9 +1,14 @@
 package com.adipoluri.destinymod.objects.items;
 
 
+import com.adipoluri.destinymod.entities.BulletEntity;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
@@ -11,11 +16,10 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class HawkMoonItem extends GunItem {
-
     public HawkMoonItem(Properties properties) {
         super(properties);
+        this.singleFire = true;
     }
-
 
     @Override
     public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
