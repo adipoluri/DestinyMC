@@ -25,7 +25,6 @@ import javax.swing.*;
 import java.util.List;
 
 public abstract class GunItem extends Item {
-    public boolean singleFire;
     public GunItem(Properties properties) {
         super(properties);
     }
@@ -33,24 +32,15 @@ public abstract class GunItem extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
-        if((!worldIn.isRemote()) && singleFire) {
+        if((!worldIn.isRemote())) {
             BulletEntity bullet = new BulletEntity(playerIn, worldIn, ((float)playerIn.experienceLevel)/3);
             bullet.shoot(playerIn.getLookVec().getX(),
                     playerIn.getLookVec().getY(),
                     playerIn.getLookVec().getZ(),
                     3.5f, 1.0f);
             worldIn.addEntity(bullet);
-            singleFire = false;
         }
         return new ActionResult<ItemStack>(ActionResultType.CONSUME, item);
     }
-
-    @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
-        if(!worldIn.isRemote()) {
-            singleFire = true;
-        }
-    }
-
 
 }
